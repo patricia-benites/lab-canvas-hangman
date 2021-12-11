@@ -99,6 +99,10 @@ document.addEventListener('keydown', event => {
       const errorsLeft = hangman.errorsLeft;
       hangmanCanvas.writeWrongLetter(letter, errorsLeft);
       hangmanCanvas.drawHangman(errorsLeft);
+
+      if (hangman.checkGameOver()) {
+        hangmanCanvas.gameOver();
+      }
     }
   }
   

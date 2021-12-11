@@ -138,7 +138,12 @@ class HangmanCanvas {
   }
 
   gameOver() {
-    // ... your code goes here
+    this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
+    const img = new Image();
+    img.src = "../images/gameover.png";
+    img.onload = () => {
+      this.context.drawImage(img, 0, 0);
+      };
   }
 
   winner() {
