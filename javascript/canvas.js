@@ -36,7 +36,27 @@ class HangmanCanvas {
   }
 
   writeCorrectLetter(index) {
-    // ... your code goes here
+    const lines = this.secretWord.length;
+    this.context.beginPath();
+    const letter = this.secretWord[index].toUpperCase()
+    this.context.font = "30px Arial";
+    // this.context.textAlign = "right";
+    // this.context.textBaseline = "bottom";
+
+    let x = 400
+    let y = 690
+
+    for (let i=0; i <=lines-1; i++ ){
+      if (i == index) {
+        this.context.moveTo(x,y);
+        this.context.fillText(letter,x+15, y);
+      }
+      x+=100;
+    }
+
+    this.context.stroke();
+    this.context.closePath();
+
   }
 
   writeWrongLetter(letter, errorsLeft) {

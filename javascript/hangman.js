@@ -65,9 +65,10 @@ if (startGameButton) {
     // HINT (uncomment when start working on the canvas portion of the lab)
     hangman.secretWord = hangman.pickWord();
     hangmanCanvas = new HangmanCanvas(hangman.secretWord);
-    // console.log(hangman);
+    console.log(hangman);
     hangmanCanvas.createBoard();
     hangmanCanvas.drawLines();
+    hangmanCanvas.writeCorrectLetter(1);
   });
 }
 
