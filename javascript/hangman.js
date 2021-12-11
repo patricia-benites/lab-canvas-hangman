@@ -47,8 +47,8 @@ class Hangman {
   }
 
   checkWinner() {
-    let userWord = this.guessedLetters.split('').sort();
-    let pickedWord = this.secretWord.split('').sort();
+    let userWord = [... new Set(this.guessedLetters.split('').sort())];
+    let pickedWord = [... new Set(this.secretWord.split('').sort())];
     return JSON.stringify(userWord) === JSON.stringify(pickedWord);
   }
 }
@@ -65,7 +65,6 @@ if (startGameButton) {
     // HINT (uncomment when start working on the canvas portion of the lab)
     hangman.secretWord = hangman.pickWord();
     hangmanCanvas = new HangmanCanvas(hangman.secretWord);
-    console.log(hangman);
     hangmanCanvas.createBoard();
     hangmanCanvas.drawLines();
     
@@ -77,9 +76,7 @@ document.addEventListener('keydown', event => {
   // console.log(event);
   const keyCode = event.keyCode;
   const letter = event.key;
-  console.log(hangman)
   if (hangman.checkIfLetter(keyCode) && hangman.checkClickedLetters(letter)) {
-    console.log('letter not clicked before') 
     hangman.addWrongLetter(letter);
     hangman.addCorrectLetter(letter);
 
@@ -94,6 +91,10 @@ document.addEventListener('keydown', event => {
       for (index of letterIndexes){
         hangmanCanvas.writeCorrectLetter(index);
       }
+
+      if (hangman.checkWinner()) {
+        hangmanCanvas.winner();
+      }
        
     } else {
       const errorsLeft = hangman.errorsLeft;
@@ -102,6 +103,7 @@ document.addEventListener('keydown', event => {
 
       if (hangman.checkGameOver()) {
         hangmanCanvas.gameOver();
+
       }
     }
   }

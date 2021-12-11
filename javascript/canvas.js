@@ -5,6 +5,7 @@ class HangmanCanvas {
   }
 
   createBoard() {
+    this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
     this.context.beginPath();
     this.context.moveTo(100,700);
     this.context.lineTo(300,700);
@@ -147,6 +148,11 @@ class HangmanCanvas {
   }
 
   winner() {
-    // ... your code goes here
-  }
+    this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
+    const img = new Image();
+    img.src = "../images/awesome.png";
+    img.onload = () => {
+      this.context.drawImage(img, 0, 0);
+      };
+}
 }
