@@ -32,7 +32,7 @@ class HangmanCanvas {
     }
 
     this.context.stroke();
-    this.context.cloasePath();
+    this.context.closePath();
   }
 
   writeCorrectLetter(index) {
