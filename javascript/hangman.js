@@ -68,7 +68,7 @@ if (startGameButton) {
     console.log(hangman);
     hangmanCanvas.createBoard();
     hangmanCanvas.drawLines();
-    hangmanCanvas.writeCorrectLetter(1);
+    
   });
 }
 
@@ -78,8 +78,24 @@ document.addEventListener('keydown', event => {
   const keyCode = event.keyCode;
   const letter = event.key;
   console.log(hangman)
-  if (hangman.checkIfLetter(keyCode)) {
-     hangman.addWrongLetter(letter);
-     hangman.addCorrectLetter(letter);
+  if (hangman.checkIfLetter(keyCode) && hangman.checkClickedLetters(letter)) {
+    console.log('letter not clicked before') 
+    hangman.addWrongLetter(letter);
+    hangman.addCorrectLetter(letter);
+
+    if (letter === hangman.guessedLetters.slice(-1)) {
+      let letterIndexes = [];
+      const word = hangman.secretWord;
+     
+      for(let i=0; i<word.length;i++) {
+          if (word[i] === letter) letterIndexes.push(i);
+      }
+
+      for (index of letterIndexes){
+        hangmanCanvas.writeCorrectLetter(index);
+      }
+      
+    }
   }
+  
 });
