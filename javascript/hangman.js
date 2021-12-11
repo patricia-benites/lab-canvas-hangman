@@ -98,6 +98,7 @@ document.addEventListener('keydown', event => {
     } else {
       const errorsLeft = hangman.errorsLeft;
       hangmanCanvas.writeWrongLetter(letter, errorsLeft);
+      hangmanCanvas.drawHangman(errorsLeft);
     }
   }
   

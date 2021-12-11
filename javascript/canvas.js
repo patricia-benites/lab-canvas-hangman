@@ -28,7 +28,7 @@ class HangmanCanvas {
     for (let i=1; i <=lines; i++ ){
       this.context.moveTo(x,y);
       this.context.lineTo(x+50, y);
-      x+=100;
+      x+=80;
     }
 
     this.context.stroke();
@@ -50,7 +50,7 @@ class HangmanCanvas {
         this.context.moveTo(x,y);
         this.context.fillText(letter,x+15, y);
       }
-      x+=100;
+      x+=80;
     }
 
     this.context.stroke();
@@ -83,7 +83,58 @@ class HangmanCanvas {
   }
 
   drawHangman(errorsLeft) {
-    // ... your code goes here
+    const bodyPart = {
+      9: "head",
+      8: "body",
+      7: "rightLeg",
+      6: "leftLeg",
+      5: "rightArm",
+      4: "leftArm",
+      3: "rightFoot",
+      2: "leftFoot",
+      1: "rightHand",
+      0: "leftHand"
+    }
+
+
+    this.context.beginPath();
+
+    if (bodyPart[errorsLeft] == "head"){
+      this.context.arc(500, 280, 30, 0, Math.PI * 2);
+    } else if (bodyPart[errorsLeft] == "body") {
+      this.context.moveTo(500,310);
+      this.context.lineTo(500,410);
+    } else if (bodyPart[errorsLeft] == "rightLeg") {
+      this.context.moveTo(500,410);
+      this.context.lineTo(550,440);
+    } else if (bodyPart[errorsLeft] == "leftLeg") {
+      this.context.moveTo(500,410);
+      this.context.lineTo(450,440);
+    } else if (bodyPart[errorsLeft] == "rightArm") {
+      this.context.moveTo(500,360);
+      this.context.lineTo(550,330);
+    } else if (bodyPart[errorsLeft] == "leftArm") {
+      this.context.moveTo(500,360);
+      this.context.lineTo(450,330);
+    } else if (bodyPart[errorsLeft] == "rightFoot") {
+      this.context.moveTo(550,440);
+      this.context.lineTo(555,430);
+    } else if (bodyPart[errorsLeft] == "leftFoot") {
+      this.context.moveTo(450,440);
+      this.context.lineTo(445,430);
+    } else if (bodyPart[errorsLeft] == "rightHand") {
+      this.context.moveTo(550,330);
+      this.context.lineTo(550,320);
+    } else if (bodyPart[errorsLeft] == "leftHand") {
+      this.context.moveTo(450,330);
+      this.context.lineTo(450,320);
+    }
+
+
+
+
+    this.context.stroke();
+    this.context.closePath();
   }
 
   gameOver() {
