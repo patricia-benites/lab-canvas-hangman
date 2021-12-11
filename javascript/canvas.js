@@ -40,8 +40,7 @@ class HangmanCanvas {
     this.context.beginPath();
     const letter = this.secretWord[index].toUpperCase()
     this.context.font = "30px Arial";
-    // this.context.textAlign = "right";
-    // this.context.textBaseline = "bottom";
+    
 
     let x = 400
     let y = 690
@@ -60,7 +59,27 @@ class HangmanCanvas {
   }
 
   writeWrongLetter(letter, errorsLeft) {
-    // ... your code goes here
+    const letterPosition = 9 - errorsLeft
+    const letterToWrite = letter.toUpperCase()
+    this.context.beginPath();
+    this.context.font = "30px Arial";
+   
+    
+    let x = 700
+    let y = 300
+
+    for (let i=0; i <=9; i++ ){
+      if (i == letterPosition) {
+        this.context.moveTo(x,y);
+        this.context.fillText(letterToWrite,x+15, y);
+      }
+      x+=50;
+    }
+
+    this.context.stroke();
+    this.context.closePath();
+
+
   }
 
   drawHangman(errorsLeft) {

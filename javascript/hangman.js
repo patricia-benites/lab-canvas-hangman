@@ -94,7 +94,10 @@ document.addEventListener('keydown', event => {
       for (index of letterIndexes){
         hangmanCanvas.writeCorrectLetter(index);
       }
-      
+       
+    } else {
+      const errorsLeft = hangman.errorsLeft;
+      hangmanCanvas.writeWrongLetter(letter, errorsLeft);
     }
   }
   
