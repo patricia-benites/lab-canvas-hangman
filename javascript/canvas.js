@@ -20,6 +20,19 @@ class HangmanCanvas {
 
   drawLines() {
     const lines = this.secretWord.length;
+    this.context.beginPath();
+
+    let x = 400
+    let y = 700
+
+    for (let i=1; i <=lines; i++ ){
+      this.context.moveTo(x,y);
+      this.context.lineTo(x+50, y);
+      x+=100;
+    }
+
+    this.context.stroke();
+    this.context.cloasePath();
   }
 
   writeCorrectLetter(index) {

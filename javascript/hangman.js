@@ -65,14 +65,15 @@ if (startGameButton) {
     // HINT (uncomment when start working on the canvas portion of the lab)
     hangman.secretWord = hangman.pickWord();
     hangmanCanvas = new HangmanCanvas(hangman.secretWord);
-    console.log(hangman);
+    // console.log(hangman);
     hangmanCanvas.createBoard();
+    hangmanCanvas.drawLines();
   });
 }
 
 document.addEventListener('keydown', event => {
   // React to user pressing a key
-  console.log(event);
+  // console.log(event);
   const keyCode = event.keyCode;
   const letter = event.key;
   console.log(hangman)
